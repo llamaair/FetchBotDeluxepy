@@ -17,7 +17,7 @@ from dotenv import load_dotenv
 #---------------------------#
 #NAME: FetchBot
 #Status: Working
-#Version: 3.0.2
+#Version: 3.0.1
 #Creator: Marc13
 #---------------------------#
 load_dotenv()
