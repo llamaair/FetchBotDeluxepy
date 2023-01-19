@@ -46,19 +46,38 @@ class automod(commands.Cog): # create a class for our cog that inherits from com
             if 'nigga' in message.content.lower():
                 await message.delete()
                 await message.channel.send(f"{message.author.mention} watch your mouth :eyes:")
+                await message.author.timeout_for(timedelta(minutes=5))
             if 'foo' in message.content.lower():
                 await message.delete()
                 await message.channel.send(f"{message.author.mention} watch your mouth :eyes:")
             if 'motherfucker' in message.content.lower():
                 await message.delete()
                 await message.channel.send(f"{message.author.mention} watch your mouth :eyes:")
+                await message.author.timeout_for(timedelta(minutes=5))
             if 'nigger' in message.content.lower():
                 await message.delete()
                 await message.channel.send(f"{message.author.mention} watch your mouth :eyes:")
+                await message.author.timeout_for(timedelta(minutes=5))
             if 'bitch' in message.content.lower():
                 await message.delete()
                 await message.channel.send(f"{message.author.mention} watch your mouth :eyes:")
             if 'fucker' in message.content.lower():
+                await message.delete()
+                await message.channel.send(f"{message.author.mention} watch your mouth :eyes:")
+            if 'fatherfucker' in message.content.lower():
+                await message.delete()
+                await message.channel.send(f"{message.author.mention} watch your mouth :eyes:")
+                await message.author.timeout_for(timedelta(minutes=5))
+            if 'asshole' in message.content.lower():
+                await message.delete()
+                await message.channel.send(f"{message.author.mention} watch your mouth :eyes:")
+            if 'cum' in message.content.lower():
+                await message.delete()
+                await message.channel.send(f"{message.author.mention} watch your mouth :eyes:")
+            if 'pussy' in message.content.lower():
+                await message.delete()
+                await message.channel.send(f"{message.author.mention} watch your mouth :eyes:")
+            if 'wanker' in message.content.lower():
                 await message.delete()
                 await message.channel.send(f"{message.author.mention} watch your mouth :eyes:")
             if len(message.raw_mentions) > 5:
