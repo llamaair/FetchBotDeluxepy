@@ -45,8 +45,8 @@ class automod(commands.Cog): # create a class for our cog that inherits from com
                 return 
             if 'nigga' in message.content.lower():
                 await message.delete()
-                await message.channel.send(f"{message.author.mention} watch your mouth :eyes:")
                 await message.author.timeout_for(timedelta(minutes=5))
+                await message.channel.send(f"{message.author.mention} watch your mouth :eyes:")
             if 'foo' in message.content.lower():
                 await message.delete()
                 await message.channel.send(f"{message.author.mention} watch your mouth :eyes:")
