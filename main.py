@@ -804,6 +804,8 @@ async def place(ctx, pos: int):
     global count
     global gameOver
 
+    await ctx.respond("Placing...", ephemeral = True)
+
     if not gameOver:
         mark = ""
         if turn == ctx.author:
@@ -820,7 +822,7 @@ async def place(ctx, pos: int):
                 for x in range(len(board)):
                     if x == 2 or x == 5 or x == 8:
                         line += " " + board[x]
-                        await ctx.send(line)
+                        await ctx.send(line, delete_after=5)
                         line = ""
                     else:
                         line += " " + board[x]
@@ -839,11 +841,11 @@ async def place(ctx, pos: int):
                 elif turn == player2:
                     turn = player1
             else:
-                await ctx.send("Be sure to choose an integer between 1 and 9 (inclusive) and an unmarked tile.")
+                await ctx.respond("Be sure to choose an integer between 1 and 9 (inclusive) and an unmarked tile.")
         else:
-            await ctx.send("It is not your turn.")
+            await ctx.respond("It is not your turn.")
     else:
-        await ctx.send("Please start a new game using the !tictactoe command.")
+        await ctx.respond("Please start a new game using the /tictactoe command.")
 
 
 def checkWinner(winningConditions, mark):
@@ -852,20 +854,6 @@ def checkWinner(winningConditions, mark):
         if board[condition[0]] == mark and board[condition[1]] == mark and board[condition[2]] == mark:
             gameOver = True
 
-@tictactoe.error
-async def tictactoe_error(ctx, error):
-    print(error)
-    if isinstance(error, commands.MissingRequiredArgument):
-        await ctx.send("Please mention 2 players for this command.")
-    elif isinstance(error, commands.BadArgument):
-        await ctx.send("Please make sure to mention/ping players (ie. <@688534433879556134>).")
-
-@place.error
-async def place_error(ctx, error):
-    if isinstance(error, commands.MissingRequiredArgument):
-        await ctx.send("Please enter a position you would like to mark.")
-    elif isinstance(error, commands.BadArgument):
-        await ctx.send("Please make sure to enter an integer.")
 
 @client.command(description="Look up a github repo or user!")
 async def github(ctx, owner, repo=None):
