@@ -83,12 +83,6 @@ class automod(commands.Cog): # create a class for our cog that inherits from com
             if 'wanker' in message.content.lower():
                 await message.delete()
                 await message.channel.send(f"{message.author.mention} watch your mouth :eyes:")
-            if self.user.mentioned_in(message):
-                print("Mentioned")
-                if 'created you' in message.content.lower():
-                    await message.channel.send(f"{message.author}, Marc13 created me in the beggining of 2022.")
-                else:
-                    await message.channel.send(f"{message.author}, huh, why did you mention me? Maybe you're trying to ask a question I don't understand or you're just mentioning others to have fun?")
             if len(message.raw_mentions) > 5:
                 await message.delete()
                 await message.channel.send(f"{message.author.mention} Please do not mass mention people :skull:")

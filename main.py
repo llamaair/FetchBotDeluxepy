@@ -60,7 +60,14 @@ def check_if_user_has_premium(ctx):
   return True
 
 
-
+@client.event
+async def on_message(message):
+  if client.user.mentioned_in(message):
+    print("Mentioned")
+    if 'created you' in message.content.lower():
+      await message.channel.send(f"{message.author}, Marc13 created me in the beggining of 2022.")
+    else:
+      await message.channel.send(f"{message.author}, huh, why did you mention me? Maybe you're trying to ask a question I don't understand or you're just mentioning others to have fun?")
 
 api_key = "c08a058955da2e4ba9286a2117aa8897"
 base_url = "http://api.openweathermap.org/data/2.5/weather?"
