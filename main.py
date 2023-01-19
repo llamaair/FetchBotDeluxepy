@@ -65,9 +65,17 @@ async def on_message(message):
   if client.user.mentioned_in(message):
     print("Mentioned")
     if 'created you' in message.content.lower():
-      await message.channel.send(f"{message.author}, Marc13 created me in the beggining of 2022.")
+      await message.channel.send(f"{message.author.mention}, Marc13 created me in the beggining of 2022.")
+    if 'made you' in message.content.lower():
+      await message.channel.send(f"{message.author.mention}, Marc13 created me in the beggining of 2022.")
+    if 'Who are you' in message.content.lower():
+      await message.channel.send(f"{message.author.mention}, I am a bot, FetchBot Deluxe, which can manage your server easily, make your members have fun and a lot more!")
+    if 'made you' in message.content.lower():
+      await message.channel.send(f"{message.author.mention}, Marc13 created me in the beggining of 2022.")
+    if 'can you do' in message.content.lower():
+      await message.channel.send(f"{message.author.mention}, I have a lot of features, such as economy, automod, moderation, fun commands, tools, leveling, server logs and much more! Go to http://fetchbot.org/commands to see my full command list")
     else:
-      await message.channel.send(f"{message.author}, huh, why did you mention me? Maybe you're trying to ask a question I don't understand or you're just mentioning others to have fun?")
+      await message.channel.send(f"{message.author.mention}, huh, why did you mention me? Maybe you're trying to ask a question I don't understand or you're just mentioning others to have fun?")
 
 api_key = "c08a058955da2e4ba9286a2117aa8897"
 base_url = "http://api.openweathermap.org/data/2.5/weather?"
