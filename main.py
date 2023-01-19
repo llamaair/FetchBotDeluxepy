@@ -90,6 +90,10 @@ async def on_message(message):
       await message.channel.send(f"{message.author.mention}, Hi there! How's your day?")
     elif 'hello' in message.content.lower():
       await message.channel.send(f"{message.author.mention}, Hi there! How's your day?")
+    elif 'how are you' in message.content.lower():
+      hay = ["I'm just fine, and you?", "I am an AI... I don't have feelings."]
+      haychoice = random.choice(hay)
+      await message.channel.send(f"{message.author.mention}, {haychoice}")
     else:
       await message.channel.send(f"{message.author.mention}, huh, why did you mention me? Maybe you're trying to ask a question I don't understand or you're just mentioning others to have fun?")
 
