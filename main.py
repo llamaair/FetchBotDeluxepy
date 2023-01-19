@@ -65,7 +65,6 @@ base_url = "http://api.openweathermap.org/data/2.5/weather?"
 
 
 @client.command(description="Get the weather of a city")
-@check(check_if_user_has_premium)
 async def weather(ctx, *, city: str):
   city_name = city
   complete_url = base_url + "appid=" + api_key + "&q=" + city_name
@@ -104,7 +103,6 @@ async def weather(ctx, *, city: str):
 
 
 @client.command(description="Search for a youtube video")
-@check(check_if_user_has_premium)
 async def ytsearch(ctx, *, search1):
   search = search1
   search = search.replace(" ", "+")
@@ -203,7 +201,6 @@ async def helpmember(ctx, member: discord.Member):
 
 @client.command(aliases=['Gw'], description="Host a giveaway")
 @commands.has_permissions(administrator=True)
-@check(check_if_user_has_premium)
 async def giveaway(ctx):
   await ctx.respond(
     "Hello . Please answer to these questions within 15 Seconds to Start the giveaway."
@@ -435,7 +432,6 @@ async def echo(ctx, *, message):
 
 
 @client.command(description="Set a reminder")
-@check(check_if_user_has_premium)
 async def reminder(ctx, time, *, reminder):
   print(time)
   print(reminder)
@@ -582,7 +578,6 @@ async def gitpull(ctx):
 
 
 @client.command(description="Get a random joke")
-@check(check_if_user_has_premium)
 async def joke(ctx):
   jokelist = [
     "What do you call a couple of chimpanzees sharing an Amazon account? PRIME-mates.",
@@ -615,7 +610,6 @@ async def premium(ctx):
 
 
 @client.command(description="Get a link to a random game")
-@check(check_if_user_has_premium)
 async def randgame(ctx):
   gamelist = [
     "https://snake.io/", "https://krunker.io/", "https://powerline.io/",
@@ -626,7 +620,6 @@ async def randgame(ctx):
 
 
 @client.command(description="Get a comic!")
-@check(check_if_user_has_premium)
 async def comic(ctx):
   chosen = random.randint(1, 1500)
   await ctx.respond(f"https://xkcd.com/{chosen}")
@@ -634,7 +627,6 @@ async def comic(ctx):
 
 @client.command(
   description="See how many users someone have invited to a server")
-@check(check_if_user_has_premium)
 async def invites(ctx, member: discord.Member = None):
   if member == None:
     user = ctx.author
@@ -650,7 +642,6 @@ async def invites(ctx, member: discord.Member = None):
 
 
 @client.command(description="Post a meme!")
-@check(check_if_user_has_premium)
 async def meme(ctx):
   global lastMeme
   memelist = [
@@ -678,7 +669,6 @@ async def meme(ctx):
 
 @client.command(description="Send a announcement using the bot!")
 @commands.has_permissions(administrator=True)
-@check(check_if_user_has_premium)
 async def announce(ctx, announcement):
   embed = discord.Embed(title=f"{announcement}")
   await ctx.channel.send(embed=embed)
@@ -692,7 +682,6 @@ async def website(ctx):
 
 @client.command(description="Lock a channel!")
 @commands.has_permissions(manage_channels=True)
-@check(check_if_user_has_premium)
 async def lock(ctx, channel: discord.TextChannel):
   channel = channel or ctx.channel
   overwrite = channel.overwrites_for(ctx.guild.default_role)
@@ -703,7 +692,6 @@ async def lock(ctx, channel: discord.TextChannel):
 
 @client.command(description="Unlock a channel!")
 @commands.has_permissions(manage_channels=True)
-@check(check_if_user_has_premium)
 async def unlock(ctx, channel: discord.TextChannel):
   channel = channel or ctx.channel
   overwrite = channel.overwrites_for(ctx.guild.default_role)
@@ -719,7 +707,6 @@ async def lock_error(ctx, error):
 
 
 @client.command(description="Start a poll")
-@check(check_if_user_has_premium)
 async def poll(ctx, *, message):
   polle = discord.Embed(title=message)
   lol = await ctx.send(embed=polle)
@@ -729,7 +716,6 @@ async def poll(ctx, *, message):
 
 
 @client.command(description="Get a prawn picture")
-@check(check_if_user_has_premium)
 async def pron(ctx):
   pronlist = [
     "https://upload.wikimedia.org/wikipedia/commons/9/98/Penaeus_monodon.jpg",
@@ -742,7 +728,6 @@ async def pron(ctx):
 
 
 @client.command(description="Get a random picture!")
-@check(check_if_user_has_premium)
 async def imagesearch(ctx, image):
   embed = discord.Embed(title='Image',
                         description='Your image',
@@ -753,7 +738,6 @@ async def imagesearch(ctx, image):
 
 
 @client.command(description="Look up a github repo or user!")
-@check(check_if_user_has_premium)
 async def github(ctx, owner, repo=None):
   if repo == None:
     await ctx.respond(f"https://github.com/{owner}")
@@ -763,7 +747,6 @@ async def github(ctx, owner, repo=None):
 
 @client.command(description="Set a slowmode!")
 @commands.has_permissions(manage_channels=True)
-@check(check_if_user_has_premium)
 async def slowmode(ctx, seconds: int):
   await ctx.channel.edit(slowmode_delay=seconds)
   await ctx.respond(
@@ -771,7 +754,6 @@ async def slowmode(ctx, seconds: int):
 
 
 @client.command(description="See how many days ago the bot was created!")
-@check(check_if_user_has_premium)
 async def createday(ctx):
   your_date = datetime.date(2022, 1, 26)
   today = datetime.date.today()
@@ -780,7 +762,6 @@ async def createday(ctx):
 
 
 @client.command(description="Get information about a shortening")
-@check(check_if_user_has_premium)
 async def shortening(ctx, *, shortening):
   if shortening.lower() == "btw":
     await ctx.respond("btw means; By the way")
