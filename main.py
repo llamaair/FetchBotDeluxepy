@@ -14,6 +14,7 @@ import json
 from discord.ext.commands import check
 from dotenv import load_dotenv
 from datetime import timedelta
+import openai
 
 #---------------------------#
 #NAME: FetchBot
@@ -81,10 +82,44 @@ async def on_message(message):
       await message.channel.send(f"{message.author.mention}, I am not a stupid bot! Just because you said that, I'm timing you out for 1 minute :sunglasses:")
       await message.author.timeout_for(timedelta(minutes=1))
     elif 'food' in message.content.lower():
-      await message.channel.send(f"{message.author.mention}, Well, my favourite food is waffles :sunglasses:")
+      await message.channel.send(f"{message.author.mention}, I am an AI, I don't eat food... What a stupid question")
     elif 'dumb' in message.content.lower():
       await message.channel.send(f"{message.author.mention}, I am not a stupid bot! Just because you said that, I'm timing you out for 1 minute :sunglasses:")
       await message.author.timeout_for(timedelta(minutes=1))
+    elif 'hi' in message.content.lower():
+      await message.channel.send(f"{message.author.mention}, Hi there! How's your day?")
+    elif 'hello' in message.content.lower():
+      await message.channel.send(f"{message.author.mention}, Hi there! How's your day?")
+    
+    
+    if message.content.startswith("!ai"):
+        # Use the GPT-3 API to generate a response
+        response = openai.Completion.create(
+            engine="text-davinci-002",
+            prompt=message.content,
+            #no of tokens in response 4097 max that is promt+response length 
+            max_tokens=2048,
+            #no of responses
+            n=1,
+            #randomness of response 0-1
+            temperature=0.3
+        )
+
+         # Get the response text
+        text = response["choices"][0]["text"]
+
+        # Split the response into multiple messages if it's longer than 1500 characters
+        if len(text) > 1500:
+            messages = [text[i:i+1500] for i in range(0, len(text), 1500)]
+        else:
+            messages = [text]
+
+
+        # Send the response messages to the Discord channel
+        for text in messages:
+            await message.reply("```"+text+"```")
+    
+
     else:
       await message.channel.send(f"{message.author.mention}, huh, why did you mention me? Maybe you're trying to ask a question I don't understand or you're just mentioning others to have fun?")
 
