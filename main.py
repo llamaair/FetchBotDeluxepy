@@ -13,6 +13,7 @@ import os
 import json
 from discord.ext.commands import check
 from dotenv import load_dotenv
+from datetime import timedelta
 
 #---------------------------#
 #NAME: FetchBot
@@ -74,6 +75,11 @@ async def on_message(message):
       await message.channel.send(f"{message.author.mention}, Marc13 created me in the beggining of 2022.")
     elif 'can you do' in message.content.lower():
       await message.channel.send(f"{message.author.mention}, I have a lot of features, such as economy, automod, moderation, fun commands, tools, leveling, server logs and much more! Go to http://fetchbot.org/commands to see my full command list")
+    elif 'bye' in message.content.lower():
+      await message.channel.send(f"{message.author.mention}, bye! Have a nice day!")
+    elif 'stupid' in message.content.lower():
+      await message.channel.send(f"{message.author.mention}, I am not a stupid bot! Just because you said that, I'm timing you out for 1 minute :sunglasses:")
+      await message.author.timeout_for(timedelta(minutes=5))
     else:
       await message.channel.send(f"{message.author.mention}, huh, why did you mention me? Maybe you're trying to ask a question I don't understand or you're just mentioning others to have fun?")
 
