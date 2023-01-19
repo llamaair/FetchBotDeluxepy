@@ -92,32 +92,31 @@ async def on_message(message):
       await message.channel.send(f"{message.author.mention}, Hi there! How's your day?")
     
     
-    if message.content.startswith("!ai"):
-        # Use the GPT-3 API to generate a response
-        response = openai.Completion.create(
-            engine="text-davinci-002",
-            prompt=message.content,
-            #no of tokens in response 4097 max that is promt+response length 
-            max_tokens=2048,
+  if message.content.startswith("!ai"):
+    response = openai.Completion.create(
+    engine="text-davinci-002",
+    prompt=message.content,
+    #no of tokens in response 4097 max that is promt+response length 
+    max_tokens=2048,
             #no of responses
-            n=1,
+    n=1,
             #randomness of response 0-1
-            temperature=0.3
-        )
+    temperature=0.3
+    )
 
          # Get the response text
-        text = response["choices"][0]["text"]
+    text = response["choices"][0]["text"]
 
         # Split the response into multiple messages if it's longer than 1500 characters
-        if len(text) > 1500:
-            messages = [text[i:i+1500] for i in range(0, len(text), 1500)]
-        else:
-            messages = [text]
+    if len(text) > 1500:
+      messages = [text[i:i+1500] for i in range(0, len(text), 1500)]
+    else:
+      messages = [text]
 
 
         # Send the response messages to the Discord channel
-        for text in messages:
-            await message.reply("```"+text+"```")
+    for text in messages:
+      await message.respond("```"+text+"```")
     
 
     else:
