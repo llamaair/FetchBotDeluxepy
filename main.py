@@ -79,7 +79,12 @@ async def on_message(message):
       await message.channel.send(f"{message.author.mention}, bye! Have a nice day!")
     elif 'stupid' in message.content.lower():
       await message.channel.send(f"{message.author.mention}, I am not a stupid bot! Just because you said that, I'm timing you out for 1 minute :sunglasses:")
-      await message.author.timeout_for(timedelta(minutes=5))
+      await message.author.timeout_for(timedelta(minutes=1))
+    elif 'food' in message.content.lower():
+      await message.channel.send(f"{message.author.mention}, Well, my favourite food is waffles :sunglasses:")
+    elif 'dumb' in message.content.lower():
+      await message.channel.send(f"{message.author.mention}, I am not a stupid bot! Just because you said that, I'm timing you out for 1 minute :sunglasses:")
+      await message.author.timeout_for(timedelta(minutes=1))
     else:
       await message.channel.send(f"{message.author.mention}, huh, why did you mention me? Maybe you're trying to ask a question I don't understand or you're just mentioning others to have fun?")
 
