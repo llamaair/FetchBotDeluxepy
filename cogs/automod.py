@@ -64,6 +64,9 @@ class automod(commands.Cog): # create a class for our cog that inherits from com
             if 'fucker' in message.content.lower():
                 await message.delete()
                 await message.channel.send(f"{message.author.mention} watch your mouth :eyes:")
+            if 'discord.gg' in message.content.lower():
+                await message.delete()
+                await message.channel.send(f"{message.author.mention} please do not send invite links to other servers here")
             if 'fatherfucker' in message.content.lower():
                 await message.delete()
                 await message.channel.send(f"{message.author.mention} watch your mouth :eyes:")
