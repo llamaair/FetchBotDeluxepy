@@ -34,6 +34,8 @@ class serverlogs(commands.Cog): # create a class for our cog that inherits from 
             automodguild = json.load(f)
         if message.guild.id not in automodguild:
             return
+        if message.author.bot:
+            return 
         guild=message.author.guild
         author = message.author
         ch = message.channel
@@ -57,6 +59,8 @@ class serverlogs(commands.Cog): # create a class for our cog that inherits from 
             automodguild = json.load(f)
         if before.guild.id not in automodguild:
             return
+        if before.author.bot:
+            return 
         blue = discord.Colour.blue()
         guild = before.author.guild
         embed=discord.Embed(title=f"{before.author} edited a message", color=blue)

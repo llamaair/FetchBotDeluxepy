@@ -841,11 +841,11 @@ async def place(ctx, pos: int):
                 elif turn == player2:
                     turn = player1
             else:
-                await ctx.respond("Be sure to choose an integer between 1 and 9 (inclusive) and an unmarked tile.")
+                await ctx.respond("Be sure to choose an integer between 1 and 9 (inclusive) and an unmarked tile.", ephemeral = True)
         else:
-            await ctx.respond("It is not your turn.")
+            await ctx.respond("It is not your turn.", ephemeral = True)
     else:
-        await ctx.respond("Please start a new game using the /tictactoe command.")
+        await ctx.respond("Please start a new game using the /tictactoe command.", ephemeral = True)
 
 
 def checkWinner(winningConditions, mark):
