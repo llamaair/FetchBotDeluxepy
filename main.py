@@ -68,7 +68,7 @@ async def on_message(message):
       await message.channel.send(f"{message.author.mention}, Marc13 created me in the beggining of 2022.")
     elif 'made you' in message.content.lower():
       await message.channel.send(f"{message.author.mention}, Marc13 created me in the beggining of 2022.")
-    elif 'Who are you' in message.content.lower():
+    elif 'who are you' in message.content.lower():
       await message.channel.send(f"{message.author.mention}, I am a bot, FetchBot Deluxe, which can manage your server easily, make your members have fun and a lot more!")
     elif 'made you' in message.content.lower():
       await message.channel.send(f"{message.author.mention}, Marc13 created me in the beggining of 2022.")
