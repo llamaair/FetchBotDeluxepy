@@ -42,7 +42,7 @@ async def on_ready():
   global startTime
   startTime = time.time()
 
-@client.command()
+@client.command(description="Chat with the FetchBot AI")
 async def gpt(ctx, query):
   print(query)
   response = openai.Completion.create(
