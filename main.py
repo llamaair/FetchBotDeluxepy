@@ -27,6 +27,7 @@ TOKEN = os.getenv("DISCORD_TOKEN")
 intents = discord.Intents.all()
 
 client = discord.Bot(intents=intents, help_command=None)
+openai.api_key = "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"
 
 global lastMeme
 lastMeme = 0
@@ -41,6 +42,22 @@ async def on_ready():
   global startTime
   startTime = time.time()
 
+@client.command()
+async def gpt(ctx, query):
+  print(query)
+  response = openai.Completion.create(
+  		model="text-davinci-003",
+  		prompt=query,
+  		temperature=0.3,
+  		max_tokens=4000,
+  		top_p=1,
+  		frequency_penalty=1,
+  		presence_penalty=1,
+  		stop=[" Human:", " AI:"]
+		)
+  text = response['choices'][0]['text']
+  print (text)
+  await ctx.respond(" " + text)
 
 @client.event
 async def on_command_error(ctx, error):
