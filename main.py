@@ -56,6 +56,9 @@ async def gpt(ctx, query):
   		stop=[" Human:", " AI:"]
 		)
   text = response['choices'][0]['text']
+  words = ["human"]
+  if "I am a human" in text:
+    text = "I am a really amazing bot :slight_smile:"
   print (text)
   await ctx.respond(" " + text)
 
