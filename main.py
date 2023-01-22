@@ -27,7 +27,7 @@ TOKEN = os.getenv("DISCORD_TOKEN")
 intents = discord.Intents.all()
 
 client = discord.Bot(intents=intents, help_command=None)
-openai.api_key = "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"
+openai.api_key = "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"
 
 global lastMeme
 lastMeme = 0
